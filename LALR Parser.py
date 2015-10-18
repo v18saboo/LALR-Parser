@@ -89,8 +89,6 @@ def swap(string,i):
 
 #Only generating ItemSet0 so far.			
 def generateItemSets(productions,states,prod):
-	global itemset_num
-	itemset_num+=1
 	itemset=list()
 	lookahead=dict()
 	flag=False
@@ -106,21 +104,22 @@ def generateItemSets(productions,states,prod):
 		lookahead[str(p)]="$"
 	if(flag):	
 		closure(itemset,states,productions,lookahead)
-	print("ItemSet",itemset_num)
-	print(itemset,"\n")
 	if(itemset not in list_itemsets):
-		print("Above Itemset is Not in List Of All ITEMSETS")
+		global itemset_num
+		itemset_num+=1
+		print("ItemSet",itemset_num)
+		print(itemset)
+		#print("Above Itemset is Not in List Of All ITEMSETS")
 		list_itemsets.append(itemset)
-		if(itemset_num==9):
-			print(list_itemsets)
-			quit()
 	else:
-		print("Already Present in the itemset")	
+		#print("Already Present in the itemset")
+		return;
 	afterDot=list()
 	# Key -> terminal/non terminal after the dot. 
 	# Value -> List of all productions which have key after the dot. Value forms the base of the itemset on transition on Key.
-	rhs_afterDot=dict() 
-	for i in itemset:
+	rhs_afterDot=dict()
+	copy_itemset=copy.deepcopy(itemset) 
+	for i in copy_itemset:
 		if (i[1][-1]=="."):
 			continue
 		next=i[1].index(".")+1
