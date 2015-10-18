@@ -1,0 +1,59 @@
+ItemSet 0
+[['S1', '.E'], ['E', '.E+T'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+['E', 'T', 'F', '(', 'i']
+{'i': [['F', '.id']], '(': [['F', '.(E)']], 'E': [['S1', '.E'], ['E', '.E+T']], 'T': [['E', '.T'], ['T', '.T*F']], 'F': [['T', '.F']]}
+ItemSet 1
+[['S1', 'E.'], ['E', 'E.+T']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+['+']
+{'+': [['E', 'E.+T']]}
+ItemSet 2
+[['E', 'E+.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+['T', 'F', '(', 'i']
+{'i': [['F', '.id']], '(': [['F', '.(E)']], 'T': [['E', 'E+.T'], ['T', '.T*F']], 'F': [['T', '.F']]}
+ItemSet 3
+[['E', 'E+T.'], ['T', 'T.*F']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+['*']
+{'*': [['T', 'T.*F']]}
+ItemSet 4
+[['T', 'T*.F'], ['F', '.(E)'], ['F', '.id']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+['F', '(', 'i']
+{'i': [['F', '.id']], '(': [['F', '.(E)']], 'F': [['T', 'T*.F']]}
+ItemSet 5
+[['T', 'T*F.']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+[]
+{}
+ItemSet 6
+[['F', '(.E)'], ['E', '.E+T'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+['E', 'T', 'F', '(', 'i']
+{'i': [['F', '.id']], '(': [['F', '.(E)']], 'E': [['F', '(.E)'], ['E', '.E+T']], 'T': [['E', '.T'], ['T', '.T*F']], 'F': [['T', '.F']]}
+ItemSet 7
+[['F', '(E.)'], ['E', 'E.+T']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+[')', '+']
+{')': [['F', '(E.)']], '+': [['E', 'E.+T']]}
+ItemSet 8
+[['F', '(E).']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+[]
+{}
+ItemSet 9
+[['E', 'E+.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']] 
+
+Above Itemset is Not in List Of All ITEMSETS
+[[['S1', 'E.'], ['E', 'E+T.'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']], [['S1', 'E.'], ['E', 'E+T.']], [['E', 'E+T.'], ['T', 'T*F.'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']], [['E', 'E+T.'], ['T', 'T*F.']], [['T', 'T*F.'], ['F', '(E).'], ['F', '.id']], [['T', 'T*F.']], [['F', '(E).'], ['E', 'E+.T'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']], [['F', '(E).'], ['E', 'E+.T']], [['F', '(E).']], [['E', 'E+.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.id']]]
