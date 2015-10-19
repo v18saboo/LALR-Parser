@@ -1,48 +1,47 @@
 ItemSet 0
 [['S1', '.E'], ['E', '.E+T'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.i']]
 ['E', 'T', 'F', '(', 'i']
-{'i': [['F', '.i']], '(': [['F', '.(E)']], 'E': [['S1', '.E'], ['E', '.E+T']], 'T': [['E', '.T'], ['T', '.T*F']], 'F': [['T', '.F']]}
+On transition from itemset 0 on E
 ItemSet 1
 [['S1', 'E.'], ['E', 'E.+T']]
 ['+']
-{'+': [['E', 'E.+T']]}
+On transition from itemset 0 on T
 ItemSet 2
-[['E', 'E+.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.i']]
-['T', 'F', '(', 'i']
-{'i': [['F', '.i']], '(': [['F', '.(E)']], 'T': [['E', 'E+.T'], ['T', '.T*F']], 'F': [['T', '.F']]}
-ItemSet 3
-[['E', 'E+T.'], ['T', 'T.*F']]
-['*']
-{'*': [['T', 'T.*F']]}
-ItemSet 4
-[['T', 'T*.F'], ['F', '.(E)'], ['F', '.i']]
-['F', '(', 'i']
-{'i': [['F', '.i']], '(': [['F', '.(E)']], 'F': [['T', 'T*.F']]}
-ItemSet 5
-[['T', 'T*F.']]
-[]
-{}
-ItemSet 6
-[['F', '(.E)'], ['E', '.E+T'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.i']]
-['E', 'T', 'F', '(', 'i']
-{'i': [['F', '.i']], '(': [['F', '.(E)']], 'E': [['F', '(.E)'], ['E', '.E+T']], 'T': [['E', '.T'], ['T', '.T*F']], 'F': [['T', '.F']]}
-ItemSet 7
-[['F', '(E.)'], ['E', 'E.+T']]
-[')', '+']
-{')': [['F', '(E.)']], '+': [['E', 'E.+T']]}
-ItemSet 8
-[['F', '(E).']]
-[]
-{}
-ItemSet 9
 [['E', 'T.'], ['T', 'T.*F']]
 ['*']
-{'*': [['T', 'T.*F']]}
-ItemSet 10
+On transition from itemset 0 on F
+ItemSet 3
 [['T', 'F.']]
 []
-{}
-ItemSet 11
+On transition from itemset 0 on (
+ItemSet 4
+[['F', '(.E)'], ['E', '.E+T'], ['E', '.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.i']]
+['E', 'T', 'F', '(', 'i']
+On transition from itemset 0 on i
+ItemSet 5
 [['F', 'i.']]
 []
-{}
+On transition from itemset 1 on +
+ItemSet 6
+[['E', 'E+.T'], ['T', '.T*F'], ['T', '.F'], ['F', '.(E)'], ['F', '.i']]
+['T', 'F', '(', 'i']
+On transition from itemset 2 on *
+ItemSet 7
+[['T', 'T*.F'], ['F', '.(E)'], ['F', '.i']]
+['F', '(', 'i']
+On transition from itemset 4 on E
+ItemSet 8
+[['F', '(E.)'], ['E', 'E.+T']]
+[')', '+']
+On transition from itemset 6 on T
+ItemSet 9
+[['E', 'E+T.'], ['T', 'T.*F']]
+['*']
+On transition from itemset 7 on F
+ItemSet 10
+[['T', 'T*F.']]
+[]
+On transition from itemset 8 on )
+ItemSet 11
+[['F', '(E).']]
+[]

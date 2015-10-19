@@ -2,7 +2,7 @@ from __future__ import print_function
 import copy
 itemset_num=-1
 list_itemsets=list()
-
+bfs_queue=list()
 def getProductions(productions,states):
 	file=open("grammar.txt","r")
 	inp=file.readlines()    
@@ -88,7 +88,10 @@ def swap(string,i):
 	return ''.join(c)
 
 #Only generating ItemSet0 so far.			
-def generateItemSets(productions,states,prod):
+def generateItemSets(productions,states,info_list):
+	prod=info_list[0]
+	parent_number=info_list[1]
+	transitionOn=info_list[2]
 	itemset=list()
 	lookahead=dict()
 	flag=False
@@ -99,7 +102,7 @@ def generateItemSets(productions,states,prod):
 		elif(p[1][-1]!="."):
 			index_of_dot=p[1].index(".")
 			p[1]=swap(p[1],index_of_dot)
-			flag=True	
+			flag=True
 		itemset.append(p)
 		lookahead[str(p)]="$"
 	if(flag):	
@@ -107,16 +110,18 @@ def generateItemSets(productions,states,prod):
 	if(itemset not in list_itemsets):
 		global itemset_num
 		itemset_num+=1
+		if(itemset_num>0):
+			print("On transition from itemset",parent_number,"on",transitionOn)	
 		print("ItemSet",itemset_num)
 		print(itemset)
-		#print("Above Itemset is Not in List Of All ITEMSETS")
 		list_itemsets.append(itemset)
 	else:
-		#print("Already Present in the itemset")
+		if(len(bfs_queue)!=0):
+			generateItemSets(productions,states,bfs_queue.pop(0))
 		return;
 	afterDot=list()
 	# Key -> terminal/non terminal after the dot. 
-	# Value -> List of all productions which have key after the dot. Value forms the base of the itemset on transition on Key.
+	# Value -> List of all productions which have Key after the dot. Value forms the base of the itemset on transition on Key.
 	rhs_afterDot=dict()
 	copy_itemset=copy.deepcopy(itemset) 
 	for i in copy_itemset:
@@ -128,12 +133,14 @@ def generateItemSets(productions,states,prod):
 			rhs_afterDot[i[1][next]]=list()
 		rhs_afterDot[i[1][next]].append(i)	
 	print(afterDot)	
-	print(rhs_afterDot)	
+	#print(rhs_afterDot)
+	parent_itemset_number = itemset_num	
 	for var in afterDot:
-		#Make a list of those. Move the dot to the right by one. Find closure of that itemset.
+		#Make a list of all variables after dot.Find their productions. Move the dot to the right by one. Find closure of that itemset.
 		new_itemset_productions = rhs_afterDot[var]
-		generateItemSets(productions,states,new_itemset_productions)
-
+		#generateItemSets(productions,states,new_itemset_productions) -----> DFS Method. Comment lines 116,117,138 and 139 to use this.
+		bfs_queue.append([new_itemset_productions,parent_itemset_number,var])
+	generateItemSets(productions,states,bfs_queue.pop(0))
 	#print("LookAhead")
 	#print(lookahead)
 
@@ -148,7 +155,7 @@ def main():
 	'''print(productions)
 	for key,value in first.items():
 		print("First(",key,") = ",str(value),sep='')'''
-	generateItemSets(productions,states,[productions[0]])	
+	generateItemSets(productions,states,[[productions[0]],None,None])	
 
 
 if(__name__=="__main__"):
