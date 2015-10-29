@@ -111,11 +111,12 @@ def generateItemSets(productions,states,info_list):
 		global itemset_num
 		itemset_num+=1
 		if(itemset_num>0):
-			print("On transition from itemset",parent_number,"on",transitionOn)	
-		print("ItemSet",itemset_num)
-		print(itemset)
+			f2.write("From itemset {} on {} goto itemset {}\n".format(parent_number,transitionOn,itemset_num))	
+		f1.write("ItemSet {}\n".format(itemset_num))
+		f1.write(str(itemset)+"\n")
 		list_itemsets.append(itemset)
 	else:
+		f2.write("From itemset {} on {} goto itemset {}\n".format(parent_number,transitionOn,list_itemsets.index(itemset)))
 		if(len(bfs_queue)!=0):
 			generateItemSets(productions,states,bfs_queue.pop(0))
 		return;
@@ -152,11 +153,15 @@ def main():
 	#Augmenting The Grammar
 	extra_production = ['S1',productions[0][0]]
 	productions.insert(0,extra_production)
-	'''print(productions)
+	print(productions)
 	for key,value in first.items():
-		print("First(",key,") = ",str(value),sep='')'''
+		print("First(",key,") = ",str(value),sep='')
 	generateItemSets(productions,states,[[productions[0]],None,None])	
 
 
 if(__name__=="__main__"):
-	main()		
+	f1=open("itemsets.txt","w")
+	f2=open("transitions.txt","w")
+	main()
+	f1.close()
+	f2.close()	
