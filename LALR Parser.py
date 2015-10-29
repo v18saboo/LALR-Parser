@@ -132,7 +132,7 @@ def generateItemSets(productions,states,info_list):
 			afterDot.append(i[1][next])
 			rhs_afterDot[i[1][next]]=list()
 		rhs_afterDot[i[1][next]].append(i)	
-	print(afterDot)	
+	#print(afterDot)	
 	#print(rhs_afterDot)
 	parent_itemset_number = itemset_num	
 	for var in afterDot:
