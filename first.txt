@@ -1,0 +1,3 @@
+First(T) = i 
+First(E) = i 
+First(F) = i 

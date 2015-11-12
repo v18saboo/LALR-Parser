@@ -1,22 +1,21 @@
-From itemset 0 on E goto itemset 1
-From itemset 0 on T goto itemset 2
-From itemset 0 on F goto itemset 3
-From itemset 0 on ( goto itemset 4
-From itemset 0 on i goto itemset 5
-From itemset 1 on + goto itemset 6
-From itemset 2 on * goto itemset 7
-From itemset 4 on E goto itemset 8
-From itemset 4 on T goto itemset 2
-From itemset 4 on F goto itemset 3
-From itemset 4 on ( goto itemset 4
-From itemset 4 on i goto itemset 5
-From itemset 6 on T goto itemset 9
-From itemset 6 on F goto itemset 3
-From itemset 6 on ( goto itemset 4
-From itemset 6 on i goto itemset 5
-From itemset 7 on F goto itemset 10
-From itemset 7 on ( goto itemset 4
-From itemset 7 on i goto itemset 5
-From itemset 8 on ) goto itemset 11
-From itemset 8 on + goto itemset 6
-From itemset 9 on * goto itemset 7
+T E F 
+i * + 
+0 E S1
+1 $ R0
+0 T S2
+2 $|+ R2
+0 F S3
+3 $|+|* R4
+0 i S4
+4 $|+|* R5
+1 + S5
+2 * S6
+5 T S7
+7 $|+ R1
+5 F S3
+5 i S4
+6 F S8
+8 $|+|* R3
+6 i S4
+7 * S6
+8
