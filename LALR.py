@@ -6,7 +6,8 @@ bfs_queue=list()
 terminals=set()
 def getProductions(productions,states):
 	file=open("grammar.txt","r")
-	inp=file.readlines()    
+	inp=file.readlines()
+	print("input",inp)    
 	for prod in inp:
 		prod=prod.replace("\n","")
 		prod=prod.replace("|","->")
@@ -15,8 +16,8 @@ def getProductions(productions,states):
 		states.add(temp[0])
 		for i in range(len(temp)-2):
 			productions.append([temp[0],temp[i+2]])
-	#print(productions)	
-	#print(states)
+	print(productions)	
+	print(states)
 
 ''' 
 Recursively finding first.
@@ -67,6 +68,7 @@ def productionsWithLHS(element,productions):
 
 def findLookahead(temp,parent,la_parent):
 	#print("In findLookahead")
+	global first
 	rhs=parent[1]
 	index_of_dot=rhs.index(".")
 	if(len(rhs)-index_of_dot>2):
@@ -121,6 +123,7 @@ def swap(string,i):
 	return ''.join(c)
 
 def generateItemSets(productions,states,info_list):
+	global bfs_queue
 	print("New Itemset!")
 	prod=info_list[0]
 	parent_number=info_list[1]
@@ -200,14 +203,23 @@ def generateItemSets(productions,states,info_list):
 	generateItemSets(productions,states,bfs_queue.pop(0))
 
 
-if(__name__=="__main__"):
+productions=list()
+states=set()
+first=dict()
+extra_production=list()
+f1,f2,f3='','',''
+final_productions=list()
+def main():
+	global f1,f2,productions,states,first,extra_production,f3,final_productions
 	f1=open("itemsets.txt","w")
 	f2=open("transitions.txt","w")
-	productions=list()
-	states=set()
+	#productions=list()
+	#states=set()
 	getProductions(productions,states)
 	first=findFirst(productions)
 	#Augmenting The Grammar
+	print(first)
+	print(productions)
 	extra_production = ['S1',productions[0][0]]
 	productions.insert(0,extra_production)
 	print(productions)
